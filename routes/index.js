@@ -34,18 +34,15 @@ Keep your response short (1-2 sentences maximum).`
                 stopSequences: []
             }
         };
-
-        // 🔹 Make API request
+        
         const response = await axios.post(GEMINI_API_URL, requestData, {
             headers: { "Content-Type": "application/json" }
         });
 
         console.log("✅ API Response:", JSON.stringify(response.data, null, 2)); 
 
-        // Extract response content
         let botResponse = response.data?.candidates?.[0]?.content?.parts?.[0]?.text || "⚠️ AI failed to generate a response.";
-
-        // ✅ Save to MongoDB
+        
         const debateEntry = new Debate({
             debateTopic,
             userSide,
