@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
     async function fetchBotResponse(userMessage) {
         try {
             const loadingMessage = displayMessage("🤖 AI is thinking...", "bot", true);
-            const response = await fetch("/api/debate", { // Notice "/api" added
+            const response = await fetch("/api/debate", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ debateTopic, userSide, botSide, userMessage }),
@@ -91,6 +91,6 @@ document.addEventListener("DOMContentLoaded", () => {
         chatContainer.appendChild(chatBox);
         chatContainer.scrollTop = chatContainer.scrollHeight;
 
-        return chatBox; // Return message element to remove it later if needed
+        return chatBox;
     }
 });
